@@ -1,0 +1,86 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Test clean",
+            "command": "rm -rf host/build && cmake -S host -B host/build",
+            "group": "build",
+            "options": {
+                "statusbar": {
+                    "label" : "$(beaker) Clean"
+                }
+            },
+            "problemMatcher": [],
+            "detail": "CMake host clean rebuild task"
+        },
+        {
+            "type": "shell",
+            "label": "Tests Build and Run",
+            "command": "cmake --build host/build -- -j$(nproc) && ctest --test-dir host/build --output-on-failure",
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "options": {
+                "statusbar": {
+                    "label" : "$(beaker) Build & Run"
+                }
+            },
+            "detail": "Builds and runs all Google Tests"
+        },
+        
+        {
+            "type": "shell",
+            "label": "Target clean",
+            "command": "rm -rf target/build && cmake -S target -B target/build",
+            "group": "build",
+            "options": {
+                "statusbar": {
+                    "label" : "$(file) Clean"
+                }
+            },
+            "problemMatcher": [],
+            "detail": "CMake target clean rebuild task"
+        },
+        {
+            "type": "shell",
+            "label": "Target build",
+            "command": "cmake --build target/build -- -j$(nproc)",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "statusbar": {
+                    "label" : "$(file) Build"
+                }
+            },
+            "problemMatcher": [],
+            "detail": "CMake build target"
+        },
+
+        {
+            "label": "Flash Firmware (GDB)",
+            "type": "shell",
+            "command": "gdb-multiarch",
+            "args": [
+                "-ex", "set pagination off",
+                "-ex", "set confirm off",
+                "-ex", "target remote host.docker.internal:61234",
+                "-ex", "monitor reset halt",
+                "-ex", "load",
+                "-ex", "monitor reset",
+                "-ex", "quit",
+                "${workspaceFolder}/target/build/tmplatemkfileu5dk.elf"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "none"
+            },
+            "detail": "Flashes firmware using GDB over ST-Link."
+        }
+
+    ]
+}
