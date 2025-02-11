@@ -1,6 +1,7 @@
 {
     "version": "2.0.0",
     "tasks": [
+        // Host tests
         {
             "type": "shell",
             "label": "Test clean",
@@ -31,6 +32,7 @@
             "detail": "Builds and runs all Google Tests"
         },
         
+        // Target STM32
         {
             "type": "shell",
             "label": "Target clean",
@@ -62,8 +64,9 @@
         },
 
         {
-            "label": "Flash Firmware (GDB)",
+            "label": "Flash Firmware (ST-Link GDB)",
             "type": "shell",
+            "dependsOn": ["Target build"],
             "command": "gdb-multiarch",
             "args": [
                 "-ex", "set pagination off",
@@ -79,7 +82,40 @@
             "group": {
                 "kind": "none"
             },
+            "options": {
+                "statusbar": {
+                    "hide": true,
+                    "label": "⚡ Build & Flash ST-Link"
+                }
+            },
             "detail": "Flashes firmware using GDB over ST-Link."
+        },
+        {
+            "label": "Flash Firmware (JLink GDB)",
+            "type": "shell",
+            "dependsOn": ["Target build"],
+            "command": "gdb-multiarch",
+            "args": [
+                "-ex", "set pagination off",
+                "-ex", "set confirm off",
+                "-ex", "target remote host.docker.internal:61234",
+                "-ex", "monitor reset halt",
+                "-ex", "load",
+                "-ex", "monitor reset",
+                "-ex", "quit",
+                "${workspaceFolder}/target/build/tmplatemkfileu5dk.elf"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "none"
+            },
+            "options": {
+                "statusbar": {
+                    "hide": false,
+                    "label": "⚡ Build & Flash JLink"
+                }
+            },
+            "detail": "Flashes firmware using GDB over JLink."
         }
 
     ]

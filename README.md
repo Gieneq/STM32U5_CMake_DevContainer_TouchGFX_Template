@@ -12,6 +12,7 @@ Features:
 ## Setup
 Project should work out of box. Admin is must-have for running Docker and VS Code.
 
+- install GDB server (STM32CubeProgrammer for ST-Link or JLink)
 - install VS Code
 - install CubeMX
 - install WSL2
@@ -25,8 +26,8 @@ Project should work out of box. Admin is must-have for running Docker and VS Cod
 - noiz 🔥 You have hopefully portable project.
 
 ## Usage
-To write code which will be cross-platform thus can be tested separatelly on host use (host)[./host] directory. Target application is placed in (target)[./target] dir. Before you upload/debug you app you need to start GDB server, just run on windows host machine [gdb/st_link_gdbserver_run.bat](./gdb/st_link_gdbserver_run.bat). Dont be fooled it is so easy, it is still embedded world - from time to time you will have to restart the GBD server because of some unknown bugs. Happy coding though.
-To star debug your code hit fancy bugy trinagle located in activity bar, then hit grin triangle to see you code stopped at breakpoint. If you made any changes in your code before debugging it will be rebuilt using cmake.
+To write code which will be cross-platform thus can be tested separatelly on host use (host)[./host] directory. Target application is placed in (target)[./target] dir. Before you upload/debug you app you need to start GDB server, just run on windows host machine [gdb/st_link_gdbserver_run.bat](./gdb/st_link_gdbserver_run.bat) or [jlink_server_run.bat](./gdb/jlink/jlink_server_run.bat). In case of STLink dont be fooled it is so easy, it is still embedded world - from time to time you will have to restart the GBD server because of some unknown bugs. Happy coding though.
+To star debug your code hit fancy bugy trinagle located in activity bar, then hit grin triangle related to your debugger to see you code stopped at breakpoint. If you made any changes in your code before debugging it will be rebuilt using cmake.
 
 Check [c_cpp_properties.json](./vscode/c_cpp_properties.json) to see 2 types of configurations: host and target. You can switch between them using bottom right status bar button.
 
@@ -41,3 +42,6 @@ Code not ompiling without any reason. Clean it with fancy `Clean` button! Or jus
 
 ## Even further
 Want to add custom tasks and debbuging, edit tassk or launch jsons.
+
+## JLink
+Update JLink firmware with `JLinkConfig`. Then run `JLink.exe` and try connect to target - type `connect cortex-m33` and proceed with dialogs. Find if your JLink support caches.

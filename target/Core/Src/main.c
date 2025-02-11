@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdbool.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,7 +46,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-static const char MSG[] = "hello from FLAasdasdSH";
+static const char MSG[] = "hellssso from FLAasdasdSH";
 
 /* USER CODE END PV */
 
@@ -98,8 +98,15 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  volatile bool should_stay = true;
+
+  while(should_stay) {
+    HAL_Delay(2);
+  }
+
   while (1)
   {
+    HAL_Delay(1);
     (void)MSG;
     /* USER CODE END WHILE */
 

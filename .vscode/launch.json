@@ -1,6 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+        // ST Link
         {
             "name": "Debug STM32U5 (ST-Link, Dev Container)",
             "svdPath": "${workspaceFolder}/gdb/STM32U5Gx.svd",
@@ -32,6 +33,59 @@
                 "monitor reset"
             ],
             
+        },
+
+        // JLink
+        {
+            "name": "Debug STM32U5 (JLink, Dev Container)",
+            "svdPath": "${workspaceFolder}/gdb/STM32U5Gx.svd",
+            "cwd": "${workspaceFolder}",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "external",
+            "gdbTarget": "host.docker.internal:61234",
+            "executable": "${workspaceFolder}/target/build/tmplatemkfileu5dk.elf",
+            "gdbPath": "/usr/bin/gdb-multiarch",
+            "objdumpPath": "/usr/bin/objdump",
+            "preLaunchTask": "Target build",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "both",
+            "interface": "swd",
+            "device": "STM32U5G9ZJ",
+            "overrideGDBServerStartedRegex": "Waiting for GDB connection...",
+            // "rtos": "ThreadX",
+            "preLaunchCommands": [
+                "monitor reset halt",
+                "load"
+            ],
+            "postLaunchCommands": [
+                "break main",
+                "continue"
+            ],
+            "overrideResetCommands": [
+                "monitor reset"
+            ],
+            "overrideLaunchCommands": [
+                "monitor reset"
+            ],
+        },
+        {
+            "name": "Attach STM32U5 (JLink, Dev Container)",
+            "svdPath": "${workspaceFolder}/gdb/STM32U5Gx.svd",
+            "cwd": "${workspaceFolder}",
+            "request": "attach",
+            "type": "cortex-debug",
+            "servertype": "external",
+            "gdbTarget": "host.docker.internal:61234",
+            "executable": "${workspaceFolder}/target/build/tmplatemkfileu5dk.elf",
+            "gdbPath": "/usr/bin/gdb-multiarch",
+            "objdumpPath": "/usr/bin/objdump",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "both",
+            "interface": "swd",
+            "device": "STM32U5G9ZJ",
+            "overrideGDBServerStartedRegex": "Waiting for GDB connection...",
+            // "rtos": "ThreadX",
         },
     ]
 }
