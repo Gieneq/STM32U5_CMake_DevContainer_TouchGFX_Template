@@ -7,6 +7,8 @@
 target/build
 host/build
 gdb/debug.log
+gdb/jlink/jlink_log.txt
+gdb/jlink/rtt_logs/rtt_output.log
 
 # User-specific files
 *.suo

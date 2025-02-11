@@ -44,4 +44,22 @@ Code not ompiling without any reason. Clean it with fancy `Clean` button! Or jus
 Want to add custom tasks and debbuging, edit tassk or launch jsons.
 
 ## JLink
+Download JLinksoftware from Segger page. Adjust paths in bat files inside `gdb/jlink`.
 Update JLink firmware with `JLinkConfig`. Then run `JLink.exe` and try connect to target - type `connect cortex-m33` and proceed with dialogs. Find if your JLink support caches.
+
+Wat to see RTT logs? Run Viewier jlink_rtt_viewer.bat or hit fancy `Monitor` button.
+
+## STM32U5G9J-DK2 (MB1918 board)
+Common pins:
+- UART debug:
+  * PA9  USART1_TX
+  * PA10 USART1_RX
+- PC13 Button (nopull, active HIGH)
+- PD2  Red LED (active LOW)
+- PD4  Green LED (active LOW)
+
+## Development
+Place sources paths in `c_cpp_properites.json` for IntelliSense purpouse, and modify top level CMakeLists.txt: `target_sources(${CMAKE_PROJECT_NAME} PRIVATE` and `target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE`.
+
+## Res
+- https://community.st.com/t5/stm32-mcus-touchgfx-and-gui/segger-rtt-doesn-t-work-when-the-touchgfx-is-initiated/td-p/684496

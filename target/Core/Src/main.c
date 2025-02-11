@@ -21,11 +21,12 @@
 #include "memorymap.h"
 #include "rng.h"
 #include "tim.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <stdbool.h>
+#include <app.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,7 +47,6 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-static const char MSG[] = "hellssso from FLAasdasdSH";
 
 /* USER CODE END PV */
 
@@ -92,22 +92,17 @@ int main(void)
   MX_GPIO_Init();
   MX_RNG_Init();
   MX_TIM1_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  volatile bool should_stay = true;
-
-  while(should_stay) {
-    HAL_Delay(2);
-  }
-
+    app_setup();
   while (1)
   {
-    HAL_Delay(1);
-    (void)MSG;
+    app_loop();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

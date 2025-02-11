@@ -116,7 +116,25 @@
                 }
             },
             "detail": "Flashes firmware using GDB over JLink."
+        },
+        {
+            "label": "RTT Monitor (JLink GDB)",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "-c", "nc host.docker.internal 19021 | tee ${workspaceFolder}/gdb/jlink/rtt_logs/rtt_output.log"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "none"
+            },
+            "options": {
+                "statusbar": {
+                    "hide": false,
+                    "label": "$(file) Monitor"
+                }
+            },
+            "detail": "Monitor RTT GDB server."
         }
-
     ]
 }

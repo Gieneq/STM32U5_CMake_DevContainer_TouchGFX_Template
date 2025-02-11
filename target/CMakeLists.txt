@@ -52,11 +52,20 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
+    "App/app.c"
+    "App/logger.c"
+
+    "components/rtt/SEGGER_RTT_printf.c"
+    "components/rtt/SEGGER_RTT_Syscalls_GCC.c"
+    "components/rtt/SEGGER_RTT.c"
 )
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined include paths
+    "App/include"
+    
+    "components/rtt/include"
 )
 
 # Add project symbols (macros)

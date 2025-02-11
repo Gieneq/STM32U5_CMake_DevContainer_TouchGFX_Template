@@ -22,5 +22,6 @@ RUN apt-get update && apt-get install -y \
     gdb-multiarch \
     binutils-arm-none-eabi \
     binutils-multiarch \
+    netcat-openbsd \
     && arm-none-eabi-gcc --version
 

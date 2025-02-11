@@ -80,12 +80,10 @@
             "executable": "${workspaceFolder}/target/build/tmplatemkfileu5dk.elf",
             "gdbPath": "/usr/bin/gdb-multiarch",
             "objdumpPath": "/usr/bin/objdump",
-            "runToEntryPoint": "main",
             "showDevDebugOutput": "both",
             "interface": "swd",
             "device": "STM32U5G9ZJ",
             "overrideGDBServerStartedRegex": "Waiting for GDB connection...",
-            // "rtos": "ThreadX",
         },
     ]
 }

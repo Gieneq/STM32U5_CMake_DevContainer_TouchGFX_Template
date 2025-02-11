@@ -11,6 +11,10 @@
                 "/usr/lib/gcc/arm-none-eabi/12.2.1/include-fixed",
 
                 "${workspaceFolder}/target/Core/Inc",
+                
+                "${workspaceFolder}/target/App/include",
+                "${workspaceFolder}/target/components/rtt/include",
+
                 "${workspaceFolder}/target/Drivers/STM32U5xx_HAL_Driver/Inc",
                 "${workspaceFolder}/target/Drivers/CMSIS/Device/ST/STM32U5xx/Include",
                 "${workspaceFolder}/target/Drivers/STM32U5xx_HAL_Driver/Inc/Legacy",
