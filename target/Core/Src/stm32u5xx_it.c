@@ -55,6 +55,10 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern DMA2D_HandleTypeDef hdma2d;
+extern GPU2D_HandleTypeDef hgpu2d;
+extern LTDC_HandleTypeDef hltdc;
+extern TIM_HandleTypeDef htim6;
 
 /* USER CODE BEGIN EV */
 
@@ -139,19 +143,6 @@ void UsageFault_Handler(void)
 }
 
 /**
-  * @brief This function handles System service call via SWI instruction.
-  */
-void SVC_Handler(void)
-{
-  /* USER CODE BEGIN SVCall_IRQn 0 */
-
-  /* USER CODE END SVCall_IRQn 0 */
-  /* USER CODE BEGIN SVCall_IRQn 1 */
-
-  /* USER CODE END SVCall_IRQn 1 */
-}
-
-/**
   * @brief This function handles Debug monitor.
   */
 void DebugMon_Handler(void)
@@ -162,33 +153,6 @@ void DebugMon_Handler(void)
   /* USER CODE BEGIN DebugMonitor_IRQn 1 */
 
   /* USER CODE END DebugMonitor_IRQn 1 */
-}
-
-/**
-  * @brief This function handles Pendable request for system service.
-  */
-void PendSV_Handler(void)
-{
-  /* USER CODE BEGIN PendSV_IRQn 0 */
-
-  /* USER CODE END PendSV_IRQn 0 */
-  /* USER CODE BEGIN PendSV_IRQn 1 */
-
-  /* USER CODE END PendSV_IRQn 1 */
-}
-
-/**
-  * @brief This function handles System tick timer.
-  */
-void SysTick_Handler(void)
-{
-  /* USER CODE BEGIN SysTick_IRQn 0 */
-
-  /* USER CODE END SysTick_IRQn 0 */
-  HAL_IncTick();
-  /* USER CODE BEGIN SysTick_IRQn 1 */
-
-  /* USER CODE END SysTick_IRQn 1 */
 }
 
 /******************************************************************************/
@@ -210,6 +174,90 @@ void EXTI13_IRQHandler(void)
   /* USER CODE BEGIN EXTI13_IRQn 1 */
 
   /* USER CODE END EXTI13_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM6 global interrupt.
+  */
+void TIM6_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM6_IRQn 0 */
+
+  /* USER CODE END TIM6_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim6);
+  /* USER CODE BEGIN TIM6_IRQn 1 */
+
+  /* USER CODE END TIM6_IRQn 1 */
+}
+
+/**
+  * @brief This function handles DMA2D global interrupt.
+  */
+void DMA2D_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA2D_IRQn 0 */
+
+  /* USER CODE END DMA2D_IRQn 0 */
+  HAL_DMA2D_IRQHandler(&hdma2d);
+  /* USER CODE BEGIN DMA2D_IRQn 1 */
+
+  /* USER CODE END DMA2D_IRQn 1 */
+}
+
+/**
+  * @brief This function handles GPU2D global interrupt.
+  */
+void GPU2D_IRQHandler(void)
+{
+  /* USER CODE BEGIN GPU2D_IRQn 0 */
+
+  /* USER CODE END GPU2D_IRQn 0 */
+  HAL_GPU2D_IRQHandler(&hgpu2d);
+  /* USER CODE BEGIN GPU2D_IRQn 1 */
+
+  /* USER CODE END GPU2D_IRQn 1 */
+}
+
+/**
+  * @brief This function handles GPU2D Error interrupt.
+  */
+void GPU2D_ER_IRQHandler(void)
+{
+  /* USER CODE BEGIN GPU2D_ER_IRQn 0 */
+
+  /* USER CODE END GPU2D_ER_IRQn 0 */
+  HAL_GPU2D_ER_IRQHandler(&hgpu2d);
+  /* USER CODE BEGIN GPU2D_ER_IRQn 1 */
+
+  /* USER CODE END GPU2D_ER_IRQn 1 */
+}
+
+/**
+  * @brief This function handles LCD-TFT global interrupt.
+  */
+void LTDC_IRQHandler(void)
+{
+  /* USER CODE BEGIN LTDC_IRQn 0 */
+
+  /* USER CODE END LTDC_IRQn 0 */
+  HAL_LTDC_IRQHandler(&hltdc);
+  /* USER CODE BEGIN LTDC_IRQn 1 */
+
+  /* USER CODE END LTDC_IRQn 1 */
+}
+
+/**
+  * @brief This function handles LCD-TFT Error interrupt.
+  */
+void LTDC_ER_IRQHandler(void)
+{
+  /* USER CODE BEGIN LTDC_ER_IRQn 0 */
+
+  /* USER CODE END LTDC_ER_IRQn 0 */
+  HAL_LTDC_IRQHandler(&hltdc);
+  /* USER CODE BEGIN LTDC_ER_IRQn 1 */
+
+  /* USER CODE END LTDC_ER_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

@@ -28,6 +28,8 @@ set(TARGET_FLAGS "-mcpu=cortex-m33 -mfpu=fpv4-sp-d16 -mfloat-abi=hard ")
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${TARGET_FLAGS}")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections")
+
+message("CMAKE_BUILD_TYPE=" ${CMAKE_BUILD_TYPE})
 if(CMAKE_BUILD_TYPE MATCHES Debug)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0 -g3")
 endif()

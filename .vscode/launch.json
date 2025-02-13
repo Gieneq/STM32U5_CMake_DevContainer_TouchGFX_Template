@@ -53,7 +53,7 @@
             "interface": "swd",
             "device": "STM32U5G9ZJ",
             "overrideGDBServerStartedRegex": "Waiting for GDB connection...",
-            // "rtos": "ThreadX",
+            "rtos": "ThreadX",
             "preLaunchCommands": [
                 "monitor reset halt",
                 "load"

@@ -1,0 +1,79 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Name": "Screen1",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 705,
+            "Height": 442,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          }
+        ],
+        "Interactions": []
+      }
+    ],
+    "CustomContainerDefinitions": [],
+    "Name": "MyApplication",
+    "Resolution": {
+      "Width": 800,
+      "Height": 480
+    },
+    "SelectedColorDepth": 16,
+    "StartupScreenName": "Screen1",
+    "SelectedStartupLanguage": "GB",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "UIPath": ".",
+    "AvailableColorDepths": [
+      16
+    ],
+    "AvailableLCDs": {
+      "16": "LCDGPU2D"
+    },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [
+      {
+        "Width": 800,
+        "Height": 480
+      }
+    ],
+    "PhysicalButtons": [],
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
+    "PostGenerateTargetCommand": "touchgfx update_project",
+    "PostGenerateTargetCommandOverride": "",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+    "CompileSimulatorCommandOverride": "",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "RunSimulatorCommandOverride": "",
+    "LandscapeSkinX": 0,
+    "LandscapeSkinY": 0,
+    "PortraitSkinX": 0,
+    "PortraitSkinY": 0,
+    "DisplayOrientation": "Landscape",
+    "Family": "STM32U5",
+    "SubFamily": "STM32U5F9/5G9",
+    "Toolchain": "CMake",
+    "Platform": "m33",
+    "ProjectFile": "../tmplatemkfileu5dk.ioc",
+    "OptionalComponentsRoot": "../Middlewares/ST/touchgfx_components",
+    "OptionalComponents": [
+      "GPU2D"
+    ],
+    "AdditionalFeatures": [
+      "GPU2DVector",
+      "VectorFonts",
+      "Video"
+    ]
+  },
+  "Version": "4.24.2"
+}

@@ -63,3 +63,15 @@ Place sources paths in `c_cpp_properites.json` for IntelliSense purpouse, and mo
 
 ## Res
 - https://community.st.com/t5/stm32-mcus-touchgfx-and-gui/segger-rtt-doesn-t-work-when-the-touchgfx-is-initiated/td-p/684496
+
+
+## Meh
+
+I have no idea why TouchGFX 4.24.2 is not generating Nema lib dir. I copy-pased `touchgfx_components` from example project and placed in `target/components` so that it wont be wipedby some regenerations. 
+
+Fun fact: CubeMX links sources of generated project of touchgfx but not middleware lol. But links middleware of threadx.
+
+To see all sections:
+arm-none-eabi-size -A /workspaces/combinedtemplate/target/build/tmplatemkfileu5dk.elf
+
+arm-none-eabi-objdump -h /workspaces/combinedtemplate/target/build/tmplatemkfileu5dk.elf

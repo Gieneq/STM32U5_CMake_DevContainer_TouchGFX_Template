@@ -14,6 +14,27 @@
                 
                 "${workspaceFolder}/target/App/include",
                 "${workspaceFolder}/target/components/rtt/include",
+                "${workspaceFolder}/target/components/touchgfx_components/gpu2d/NemaGFX/include",
+                "${workspaceFolder}/target/components/touchgfx_components/gpu2d/TouchGFXNema/include",
+
+                // Touchgfx related
+                "${workspaceFolder}/target/TouchGFX/target",
+                "${workspaceFolder}/target/TouchGFX/target/generated",
+
+                "${workspaceFolder}/target/TouchGFX/gui/include",
+
+                "${workspaceFolder}/target/TouchGFX/generated/fonts/include",
+                "${workspaceFolder}/target/TouchGFX/generated/gui_generated/include",
+                "${workspaceFolder}/target/TouchGFX/generated/images/include",
+                "${workspaceFolder}/target/TouchGFX/generated/texts/include",
+                "${workspaceFolder}/target/TouchGFX/generated/videos/include",
+                "${workspaceFolder}/target/TouchGFX/App",
+
+
+                "${workspaceFolder}/target/Middlewares/ST/threadx/common/inc",
+                "${workspaceFolder}/target/Middlewares/ST/threadx/ports/cortex_m33/gnu/inc",
+                "${workspaceFolder}/target/Middlewares/ST/touchgfx/framework/include",
+                "${workspaceFolder}/target/Middlewares/ST/touchgfx/3rdparty/libjpeg/include",
 
                 "${workspaceFolder}/target/Drivers/STM32U5xx_HAL_Driver/Inc",
                 "${workspaceFolder}/target/Drivers/CMSIS/Device/ST/STM32U5xx/Include",

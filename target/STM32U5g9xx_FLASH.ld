@@ -164,5 +164,17 @@ SECTIONS
     libgcc.a ( * )
   }
 
+  TouchGFX_Framebuffer(NOLOAD) : {
+    . = ALIGN(4);
+  } >RAM
+
+  Nemagfx_Stencil_Buffer(NOLOAD) : {
+    . = ALIGN(4);
+  } >RAM
+
+  Nemagfx_Memory_Pool_Buffer(NOLOAD) : {
+    . = ALIGN(4);
+  } >RAM
+
   .ARM.attributes 0 : { *(.ARM.attributes) }
 }
