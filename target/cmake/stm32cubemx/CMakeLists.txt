@@ -32,6 +32,7 @@ target_sources(stm32cubemx INTERFACE
     ../../Core/Src/main.c
     ../../Core/Src/gpio.c
     ../../Core/Src/crc.c
+    ../../Core/Src/dcache.c
     ../../Core/Src/dma2d.c
     ../../Core/Src/gpu2d.c
     ../../Core/Src/icache.c
@@ -76,6 +77,7 @@ target_sources(stm32cubemx INTERFACE
     ../../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_pwr_ex.c
     ../../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gtzc.c
     ../../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_icache.c
+    ../../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dcache.c
     ../../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_dma2d.c
     ../../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_gpu2d.c
     ../../Drivers/STM32U5xx_HAL_Driver/Src/stm32u5xx_hal_jpeg.c

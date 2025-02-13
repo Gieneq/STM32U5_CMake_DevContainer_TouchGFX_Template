@@ -57,6 +57,7 @@
 /* External variables --------------------------------------------------------*/
 extern DMA2D_HandleTypeDef hdma2d;
 extern GPU2D_HandleTypeDef hgpu2d;
+extern JPEG_HandleTypeDef hjpeg;
 extern LTDC_HandleTypeDef hltdc;
 extern TIM_HandleTypeDef htim6;
 
@@ -258,6 +259,20 @@ void LTDC_ER_IRQHandler(void)
   /* USER CODE BEGIN LTDC_ER_IRQn 1 */
 
   /* USER CODE END LTDC_ER_IRQn 1 */
+}
+
+/**
+  * @brief This function handles JPEG sync interrupt.
+  */
+void JPEG_IRQHandler(void)
+{
+  /* USER CODE BEGIN JPEG_IRQn 0 */
+
+  /* USER CODE END JPEG_IRQn 0 */
+  HAL_JPEG_IRQHandler(&hjpeg);
+  /* USER CODE BEGIN JPEG_IRQn 1 */
+
+  /* USER CODE END JPEG_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

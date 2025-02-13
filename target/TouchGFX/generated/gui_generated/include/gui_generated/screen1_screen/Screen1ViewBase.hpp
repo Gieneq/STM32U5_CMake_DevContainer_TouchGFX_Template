@@ -26,6 +26,9 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box box1;
+    touchgfx::Box box1_1;
+    touchgfx::Box box1_1_1;
+    touchgfx::Box box1_1_1_1;
 
 private:
 

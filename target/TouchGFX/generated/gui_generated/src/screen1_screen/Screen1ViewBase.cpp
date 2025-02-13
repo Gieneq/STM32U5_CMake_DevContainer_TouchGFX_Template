@@ -10,9 +10,21 @@ Screen1ViewBase::Screen1ViewBase()
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    box1.setPosition(0, 0, 705, 442);
+    box1.setPosition(0, 0, 507, 163);
     box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     add(box1);
+
+    box1_1.setPosition(20, 82, 507, 163);
+    box1_1.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
+    add(box1_1);
+
+    box1_1_1.setPosition(32, 15, 82, 86);
+    box1_1_1.setColor(touchgfx::Color::getColorFromRGB(46, 60, 255));
+    add(box1_1_1);
+
+    box1_1_1_1.setPosition(32, 113, 82, 22);
+    box1_1_1_1.setColor(touchgfx::Color::getColorFromRGB(102, 255, 0));
+    add(box1_1_1_1);
 }
 
 Screen1ViewBase::~Screen1ViewBase()

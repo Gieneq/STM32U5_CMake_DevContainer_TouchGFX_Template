@@ -46,11 +46,11 @@ void MX_LTDC_Init(void)
   hltdc.Init.PCPolarity = LTDC_PCPOLARITY_IPC;
   hltdc.Init.HorizontalSync = 4;
   hltdc.Init.VerticalSync = 4;
-  hltdc.Init.AccumulatedHBP = 11;
+  hltdc.Init.AccumulatedHBP = 12;
   hltdc.Init.AccumulatedVBP = 12;
-  hltdc.Init.AccumulatedActiveW = 651;
+  hltdc.Init.AccumulatedActiveW = 812;
   hltdc.Init.AccumulatedActiveH = 492;
-  hltdc.Init.TotalWidth = 657;
+  hltdc.Init.TotalWidth = 820;
   hltdc.Init.TotalHeigh = 506;
   hltdc.Init.Backcolor.Blue = 0;
   hltdc.Init.Backcolor.Green = 0;
@@ -98,16 +98,16 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* ltdcHandle)
   /** Initializes the peripherals clock
   */
     PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_LTDC;
-    PeriphClkInit.LtdcClockSelection = RCC_LTDCCLKSOURCE_PLL2;
-    PeriphClkInit.PLL2.PLL2Source = RCC_PLLSOURCE_HSE;
-    PeriphClkInit.PLL2.PLL2M = 4;
-    PeriphClkInit.PLL2.PLL2N = 66;
-    PeriphClkInit.PLL2.PLL2P = 2;
-    PeriphClkInit.PLL2.PLL2Q = 2;
-    PeriphClkInit.PLL2.PLL2R = 2;
-    PeriphClkInit.PLL2.PLL2RGE = RCC_PLLVCIRANGE_0;
-    PeriphClkInit.PLL2.PLL2FRACN = 0;
-    PeriphClkInit.PLL2.PLL2ClockOut = RCC_PLL2_DIVR;
+    PeriphClkInit.LtdcClockSelection = RCC_LTDCCLKSOURCE_PLL3;
+    PeriphClkInit.PLL3.PLL3Source = RCC_PLLSOURCE_HSE;
+    PeriphClkInit.PLL3.PLL3M = 4;
+    PeriphClkInit.PLL3.PLL3N = 125;
+    PeriphClkInit.PLL3.PLL3P = 2;
+    PeriphClkInit.PLL3.PLL3Q = 2;
+    PeriphClkInit.PLL3.PLL3R = 20;
+    PeriphClkInit.PLL3.PLL3RGE = RCC_PLLVCIRANGE_0;
+    PeriphClkInit.PLL3.PLL3FRACN = 0;
+    PeriphClkInit.PLL3.PLL3ClockOut = RCC_PLL3_DIVR;
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
     {
       Error_Handler();

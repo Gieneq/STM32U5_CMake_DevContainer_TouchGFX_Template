@@ -21,6 +21,7 @@
 #include "main.h"
 #include "jpeg_utils_conf.h"
 #include "crc.h"
+#include "dcache.h"
 #include "dma2d.h"
 #include "gpu2d.h"
 #include "icache.h"
@@ -112,6 +113,8 @@ int main(void)
   MX_GPU2D_Init();
   MX_JPEG_Init();
   MX_ICACHE_Init();
+  MX_DCACHE1_Init();
+  MX_DCACHE2_Init();
   /* Call PreOsInit function */
   MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */

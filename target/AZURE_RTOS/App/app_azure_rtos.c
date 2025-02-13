@@ -22,7 +22,7 @@
 #include "app_azure_rtos.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "app_touchgfx.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -93,12 +93,15 @@ VOID tx_application_define(VOID *first_unused_memory)
     if (status != TX_SUCCESS)
     {
       /* USER CODE BEGIN  App_ThreadX_Init_Error */
-      while(1)
-      {
-      }
+      while(1) { }
       /* USER CODE END  App_ThreadX_Init_Error */
     }
     /* USER CODE BEGIN  App_ThreadX_Init_Success */
+    status = MX_TouchGFX_Init(memory_ptr);
+    if (status != TX_SUCCESS) 
+    {
+      while(1) { }
+    }
 
     /* USER CODE END  App_ThreadX_Init_Success */
 
