@@ -57,7 +57,7 @@ uint32_t FrameBufferWidth;
 #define MCU_CHROMA_420_SIZE_BYTES   ((uint32_t)384)
 
 #define CHUNK_SIZE_IN  ((uint32_t)(1024*52))  /* Max block size */
-#define CHUNK_SIZE_OUT ((uint32_t)(MCU_CHROMA_420_SIZE_BYTES * (800 / MCU_WIDTH_PIXELS)))
+#define CHUNK_SIZE_OUT ((uint32_t)(MCU_CHROMA_420_SIZE_BYTES * (480 / MCU_WIDTH_PIXELS)))
 
 uint8_t MCU_Data_OutBuffer0[CHUNK_SIZE_OUT];
 uint8_t MCU_Data_OutBuffer1[CHUNK_SIZE_OUT];
@@ -420,7 +420,7 @@ void HardwareMJPEGDecoder::decodeMJPEGFrame(const uint8_t* const mjpgdata, const
         {
             JPEG_ConvertorParams.WidthExtend += 16 - (JPEG_ConvertorParams.WidthExtend % 16);
         }
-        JPEG_ConvertorParams.ScaledWidth = 800 * JPEG_ConvertorParams.bytes_pr_pixel;
+        JPEG_ConvertorParams.ScaledWidth = 480 * JPEG_ConvertorParams.bytes_pr_pixel;
         JPEG_ConvertorParams.MCU_pr_line = JPEG_ConvertorParams.WidthExtend / MCU_WIDTH_PIXELS;
         JPEG_ConvertorParams.LastLineHeight = (videoInfo.frame_height % MCU_HEIGHT_PIXELS) == 0 ? 0 : MCU_HEIGHT_PIXELS - (videoInfo.frame_height % MCU_HEIGHT_PIXELS);
 
@@ -460,7 +460,7 @@ bool HardwareMJPEGDecoder::decodeFrame(const touchgfx::Rect& area, uint8_t* fram
     {
         JPEG_ConvertorParams.WidthExtend += 16 - (JPEG_ConvertorParams.WidthExtend % 16);
     }
-    JPEG_ConvertorParams.ScaledWidth = 800 * JPEG_ConvertorParams.bytes_pr_pixel;
+    JPEG_ConvertorParams.ScaledWidth = 480 * JPEG_ConvertorParams.bytes_pr_pixel;
     JPEG_ConvertorParams.MCU_pr_line = JPEG_ConvertorParams.WidthExtend / MCU_WIDTH_PIXELS;
     JPEG_ConvertorParams.startY = area.y;
     JPEG_ConvertorParams.endY = MIN((uint32_t)area.bottom(), videoInfo.frame_height);
@@ -819,7 +819,7 @@ void DMA2D_CopyBuffer(JPEG_Data_BufferTypeDef& job)
     WRITE_REG(DMA2D->OMAR, reinterpret_cast<uint32_t>(job.OutputBuffer + dstOffset));
 
     /* DMA2D OOR register configuration */
-    WRITE_REG(DMA2D->OOR, 800 - width);
+    WRITE_REG(DMA2D->OOR, 480 - width);
 
     /* DMA2D FGOR register configuration */
     WRITE_REG(DMA2D->FGOR, scaledWidth);
@@ -848,7 +848,7 @@ void DMA2D_CropBuffer(JPEG_Data_BufferTypeDef& job)
     const uint32_t srcOffset = (JPEG_ConvertorParams.MCUStart + job.MCU_drawn) * MCU_CHROMA_420_SIZE_BYTES;
     const uint32_t dstOffset = JPEG_ConvertorParams.MCUStart * MCU_WIDTH_PIXELS * JPEG_ConvertorParams.bytes_pr_pixel
                                + job.MCU_drawn * MCU_WIDTH_PIXELS * JPEG_ConvertorParams.bytes_pr_pixel
-                               + rowTopOffset * JPEG_ConvertorParams.bytes_pr_pixel * 800
+                               + rowTopOffset * JPEG_ConvertorParams.bytes_pr_pixel * 480
                                + colLeftOffset * JPEG_ConvertorParams.bytes_pr_pixel;
     const uint32_t cropSrcOffset = colLeftOffset * JPEG_ConvertorParams.bytes_pr_pixel
                                    + rowTopOffset * JPEG_ConvertorParams.bytes_pr_pixel * MCU_HEIGHT_PIXELS;
@@ -867,7 +867,7 @@ void DMA2D_CropBuffer(JPEG_Data_BufferTypeDef& job)
     blitOp.nSteps = MCU_WIDTH_PIXELS - colLeftOffset - colRightOffset;
     blitOp.nLoops = MCU_HEIGHT_PIXELS - rowTopOffset - rowBottomOffset;
     blitOp.srcLoopStride = MCU_WIDTH_PIXELS;
-    blitOp.dstLoopStride = 800;
+    blitOp.dstLoopStride = 480;
     blitOp.pDst = reinterpret_cast<uint16_t*>(job.OutputBuffer + dstOffset);
     blitOp.srcFormat = touchgfx::Bitmap::RGB565;
     blitOp.dstFormat = touchgfx::Bitmap::RGB565;

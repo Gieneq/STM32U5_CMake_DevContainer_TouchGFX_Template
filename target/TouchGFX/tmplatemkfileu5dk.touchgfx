@@ -7,8 +7,8 @@
           {
             "Type": "Box",
             "Name": "box1",
-            "Width": 507,
-            "Height": 163,
+            "Width": 480,
+            "Height": 272,
             "Color": {
               "Red": 255,
               "Green": 255,
@@ -20,7 +20,7 @@
             "Name": "box1_1",
             "X": 20,
             "Y": 82,
-            "Width": 507,
+            "Width": 460,
             "Height": 163,
             "Color": {
               "Red": 255
@@ -58,8 +58,8 @@
     "CustomContainerDefinitions": [],
     "Name": "MyApplication",
     "Resolution": {
-      "Width": 800,
-      "Height": 480
+      "Width": 480,
+      "Height": 272
     },
     "SelectedColorDepth": 16,
     "StartupScreenName": "Screen1",
@@ -78,8 +78,8 @@
     ],
     "AvailableResolutions": [
       {
-        "Width": 800,
-        "Height": 480
+        "Width": 480,
+        "Height": 272
       }
     ],
     "PhysicalButtons": [],

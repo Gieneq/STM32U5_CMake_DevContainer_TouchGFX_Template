@@ -42,7 +42,7 @@ static LCDGPU2D display;
 static VectorFontRendererImpl vectorFontRenderer;
 static ApplicationFontProvider fontProvider;
 static Texts texts;
-static TouchGFXHAL hal(dma, display, tc, 800, 480);
+static TouchGFXHAL hal(dma, display, tc, 480, 272);
 
 void touchgfx_init()
 {
@@ -71,7 +71,7 @@ void touchgfx_init()
 void touchgfx_components_init()
 {
     nema_init();
-    nema_vg_init_stencil_pool(800, 480, 1);
+    nema_vg_init_stencil_pool(480, 272, 1);
     nema_vg_handle_large_coords(1, 1);
 }
 

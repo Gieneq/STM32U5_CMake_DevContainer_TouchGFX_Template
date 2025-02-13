@@ -59,7 +59,7 @@ namespace
 {
 // Use the section "TouchGFX_Framebuffer" in the linker script to specify the placement of the buffer
 LOCATION_PRAGMA_NOLOAD("TouchGFX_Framebuffer")
-uint32_t frameBuf[(800 * 480 * 2 + 3) / 4 * 2] LOCATION_ATTRIBUTE_NOLOAD("TouchGFX_Framebuffer");
+uint32_t frameBuf[(480 * 272 * 2 + 3) / 4 * 2] LOCATION_ATTRIBUTE_NOLOAD("TouchGFX_Framebuffer");
 static uint16_t lcd_int_active_line;
 static uint16_t lcd_int_porch_line;
 }
