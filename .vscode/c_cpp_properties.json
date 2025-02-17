@@ -64,7 +64,8 @@
             "includePath": [
                 "${workspaceFolder}/host",
                 "${workspaceFolder}/host/tests",
-                "${workspaceFolder}/build",
+                "${workspaceFolder}/host/build/_deps/googletest-src/googletest/include",
+                "${workspaceFolder}/host/build/_deps/googletest-src/googlemock/include",
                 "/usr/include",
                 "/usr/local/include"
             ],
@@ -74,7 +75,6 @@
             ],
             "browse": {
                 "path": [
-                    "${workspaceFolder}/build",
                     "${workspaceFolder}/host",
                     "${workspaceFolder}/host/tests"
                 ],

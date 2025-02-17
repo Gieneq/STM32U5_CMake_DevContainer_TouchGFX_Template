@@ -18,7 +18,8 @@
 				"twxs.cmake",
 				"actboy168.tasks",
 				"marus25.cortex-debug",
-				"josetr.cmake-language-support-vscode"
+				"josetr.cmake-language-support-vscode",
+				"ms-vscode.cpptools-extension-pack"
 			]
 		}
 	},

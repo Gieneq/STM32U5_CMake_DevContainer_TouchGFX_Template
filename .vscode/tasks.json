@@ -9,7 +9,7 @@
             "group": "build",
             "options": {
                 "statusbar": {
-                    "label" : "$(beaker) Clean"
+                    "label" : "$(beaker) Regenerate"
                 }
             },
             "problemMatcher": [],
@@ -26,7 +26,7 @@
             },
             "options": {
                 "statusbar": {
-                    "label" : "$(beaker) Build & Run"
+                    "label" : "$(beaker) Build & Test"
                 }
             },
             "detail": "Builds and runs all Google Tests"
@@ -40,7 +40,7 @@
             "group": "build",
             "options": {
                 "statusbar": {
-                    "label" : "$(file) Clean"
+                    "label" : "$(file) Regenerate"
                 }
             },
             "problemMatcher": [],
@@ -122,7 +122,7 @@
             "type": "shell",
             "command": "bash",
             "args": [
-                "-c", "nc host.docker.internal 19021 | tee ${workspaceFolder}/gdb/jlink/rtt_logs/rtt_output.log"
+                "-c", "nc host.docker.internal 19021 | tee ${workspaceFolder}/gdb/jlink/rtt_output.log"
             ],
             "problemMatcher": [],
             "group": {
@@ -131,7 +131,7 @@
             "options": {
                 "statusbar": {
                     "hide": false,
-                    "label": "$(file) Monitor"
+                    "label": "🔎 Monitor"
                 }
             },
             "detail": "Monitor RTT GDB server."

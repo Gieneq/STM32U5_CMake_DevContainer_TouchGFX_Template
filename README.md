@@ -1,55 +1,108 @@
 # STM32U5 template
 
-Main MCU (STM32U5G9ZJT6Q)[https://www.st.com/en/microcontrollers-microprocessors/stm32u5g9zj.html] 
+Easy (hopefully) to setup and use project template of STM32U5 with TouchGFX built with CMake on Docker. Works with STLink and JLink. Main MCU [STM32U5G9ZJT6Q](https://www.st.com/en/microcontrollers-microprocessors/stm32u5g9zj.html), related Discovery board STM32U5G9J-DK2.
 
-## Features
+## Features 📦
 Features:
-- host unit tests: see *tasks.json* or *test icons* on status bar,
-- target build, upload and debug: see *tasks.json*, *launch.json* and *icons* on status bar,
+- Dev Container
+- Host Google Tests
+- Target build, flash, debug
 - CubeMX version: 6.13.0
+- TouchGFX 4.24.2
+- CMake
+- JLink RTT
 
+## Quickstart (JLink) 🚀
+First steps will explain setup tooling, the remaining ones will explain tools and test programming capabilities:
+- Install:
+  * [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install)
+  * [Segger JLink](https://www.segger.com/downloads/jlink/)
+  * [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+  * [CubeMX 6.13.0](https://www.st.com/en/development-tools/stm32cubemx.html)
+  * [TouchGFX 4.24.2](https://www.st.com/en/development-tools/touchgfxdesigner.html)
+- Run **Docker Desktop** as admin.
+- Open **VS Code** as admin.
+- Run in **Git Bash** `git clone https://github.com/Gieneq/STM32U5_CMake_DevContainer_TouchGFX_Template.git` Caution! After entering container you will change git user. At best use Git Bash or commit changes after closing remote connection, then VS Code revert windows side git user. Using docker side git user can cause multiuser problems.
+- In VS Code open folder with project.
+- In VS Code **reopen folder in container**, can be prompted, if not, hit **bottom-left** `Remote Connection` button and select `reopen in container`
+- If prompted `Reload window` especially because **Cortex-Debug** extension. Ignore Git related warnings.
+- Check your new fancy linux container:
+  * Hit `Ctrl + Shift + ~` to open new terminal.
+  * Run `ls /usr/bin | grep arm-none-eabi` to see if you have required tools
+- Modify **jlink_config.bat** file with path to JLink.
+- Open JLink server on windows side [./gdb/jlink/jlink_server_run.bat](./gdb/jlink/jlink_server_run.bat)
+- Open JLink RTT viewer to monitor logs [./gdb/jlink/jlink_rtt_viewer.bat](./gdb/jlink/jlink_rtt_viewer.bat)
+- Examin bottom **Status Bar** with some super fancy buttons:
+  * `🧪 Regenerate`, `🧪 Build & Test` are used to tests multiplatform feature on host using Google Tests, best for quick testing small features without involving target firmware,
+  * `📂 Regenerate`, `📂 Build`, `⚡ Build & Flash JLink` are used to build & run on target. Note! `📂 Build & Flash JLink` will flash firmware but JLink will halt code. Use `🔎 Monitor` button to see code execution.
+  * `🔎 Monitor` run RTT client interacting with JLink server. At best use **RTT Viewer** on windows side + **Debug Lauch** instead.
+- Check **target** programming capabilities:
+  * Hit super fancy button `📂 Regenerate` from **Status Bar** to recreate CMake build folder.
+  * Hit `Ctrl+Shift+B` or use super fancy button `📂 Build` from **Status Bar** to build **.elf** file.
+  * Exter `Run & Debug` from **Activity Bar** and hit green triangle with Debug JLink, it will flash wirmware and run debugging via windows side GDB server. Note second option **Attach**.
+  * Hit continue from navigation bar shown ontop window. By default JLink will halt, also after disconnecting from GDB.
+- Check **host** testing capabilities:
+  * Hit super fancy button `🧪 Regenerate` from **Status Bar** to recreate CMake build folder.
+  * Hit super fancy button `🧪 Build & Test` from **Status Bar** to build **.exe** file and run.
 
-## Setup
-Project should work out of box. Admin is must-have for running Docker and VS Code.
+> **_Build note:_** at best `📂 Build` should regenerate CMake. Meybe in future.
 
-- install GDB server (STM32CubeProgrammer for ST-Link or JLink)
-- install VS Code
-- install CubeMX
-- install WSL2
-- install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- clone project `git clone todo`
-- run Docker Desktop as admin
-- in VS Code open folder with project
-- in bottom-left corner with remote options left click and select `reopen in container`
-- click newly opened popup if you wish to monitor progress, it will take severa lminutes to setup
-- if done successfully open terminal `ctrl + shift + ~` and do what you want in this brand new fancy linux stuff. Check if you have arm compiler: `ls /usr/bin | grep arm-none-eabi`
-- noiz 🔥 You have hopefully portable project.
+> **_Important! Language modes:_** there are 2 modes `Host` & `Target`. Select which one you need in bottom-right corner. If not, IntelliSense will not recognise paths properly. See [./.vscode/c_cpp_properties.json](./.vscode/c_cpp_properties.json).
 
-## Usage
-To write code which will be cross-platform thus can be tested separatelly on host use (host)[./host] directory. Target application is placed in (target)[./target] dir. Before you upload/debug you app you need to start GDB server, just run on windows host machine [gdb/st_link_gdbserver_run.bat](./gdb/st_link_gdbserver_run.bat) or [jlink_server_run.bat](./gdb/jlink/jlink_server_run.bat). In case of STLink dont be fooled it is so easy, it is still embedded world - from time to time you will have to restart the GBD server because of some unknown bugs. Happy coding though.
-To star debug your code hit fancy bugy trinagle located in activity bar, then hit grin triangle related to your debugger to see you code stopped at breakpoint. If you made any changes in your code before debugging it will be rebuilt using cmake.
+> **_Reopen locally:_** Want to come back to windows side to commit changes - bottom-left `Remote Connections -> `Reopen Folder Locally`.
 
-Check [c_cpp_properties.json](./vscode/c_cpp_properties.json) to see 2 types of configurations: host and target. You can switch between them using bottom right status bar button.
+> **_Holded firmware:_** Want run firmware freely? Send continue command to GDB or just close GDB.
 
-Step by step:
-1. Generate code using CubeMX (windows side),
-2. Start GDB server,
-3. Reopen project in container,
-4. Hit `Ctrl + Shift + B` or click fancy bottom status bar icon called `Build`,
-5. Do debugging or just upload with fancy `Upload` button on your favourite status bar.
+## Project tour-guide 🗺️
+Project is separated into 3 directories:
+- [./gdb](./gdb) - location for run servers **.bat** files.
+- [./host](./host) - host side tests related subproject.
+- [./target](./target) - target side firmware related subproject.
 
-Code not ompiling without any reason. Clean it with fancy `Clean` button! Or just target/discard build dir. Still not working? Check `git diff` and see what got messed up.
+### Directory ./gdb
 
-## Even further
-Want to add custom tasks and debbuging, edit tassk or launch jsons.
+Here you can find STLink related server and settings. If you use STLink modify `st_link_gdbserver_config.txt` file with path to **STMCubeProgrammer**:
+```text
+###############################################################
+-cp C:\Program Files\STMicroelectronics\STM32Cube\STM32CubeProgrammer\bin\
+```
+To run STLink server, use on windows side `st_link_gdbserver_run.bat`.
 
-## JLink
-Download JLinksoftware from Segger page. Adjust paths in bat files inside `gdb/jlink`.
-Update JLink firmware with `JLinkConfig`. Then run `JLink.exe` and try connect to target - type `connect cortex-m33` and proceed with dialogs. Find if your JLink support caches.
+JLink related stuff you will find in Jlink directory. Here you have server, viewer (requiring running server), and viewer log file if created.
 
-Wat to see RTT logs? Run Viewier jlink_rtt_viewer.bat or hit fancy `Monitor` button.
+If you will use JLink, modify **jlink_config.bat** file with path. Here example of using JLink_V812e:
 
-## STM32U5G9J-DK2 (MB1918 board)
+```text
+set JLINK_PATH=C:\SEGGER\JLink_V812e
+```
+
+### Directory ./host
+Modify CMake to add sources of tests. At first gtest will be unknown in source files, try `Regenerate` so that CMake will download Google Trst framework.
+
+### Directory ./target
+If you use CubeMX, newly created files will be automatically added, check [./target/cmake](./target/cmake) dir. 
+
+Use TouchGFX to modify project. Note! probably you will need to modify top level **CMakeLists.txt**.
+
+Top level **CMakeLists.txt** modifications:
+- sources add by Glob search to pass content of directory or add individual sources to `target_sources(${CMAKE_PROJECT_NAME} PRIVATE`,
+- header files pass to `target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE`
+- dir with library files pass here `target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE`, CMake will seek for lib in those dirs to find names from `target_link_libraries`
+- lib add in `target_link_libraries(${CMAKE_PROJECT_NAME}`. If lib is from CMake pass its project name, if it is static pass filename.
+
+Development:
+- place libraries & shared code in [./target/components](./target/components)
+- [./target/Core](./target/Core) shoudl be used for HAL/BSP layer C code.
+- [./target/App](./target/App) shoudl be used for application layer code - place buisness logic here.
+- [./target/TouchGFX](./target/TouchGFX) HMI related, do not modify generated files like **Base** Views Classes.
+- TouchGFX Simulator is turned off in Designer config. In long run it is too much involving to maintaing both target and simulator.
+
+## Todo 📒
+Some plans:
+- Consider adding integration tests, probably requring remote server or run from windows side.
+- External memory loading.
+
+## STM32U5G9J-DK2 (MB1918 board) 🎯
 Common pins:
 - UART debug:
   * PA9  USART1_TX
@@ -58,18 +111,11 @@ Common pins:
 - PD2  Red LED (active LOW)
 - PD4  Green LED (active LOW)
 
-## Development
-Place sources paths in `c_cpp_properites.json` for IntelliSense purpouse, and modify top level CMakeLists.txt: `target_sources(${CMAKE_PROJECT_NAME} PRIVATE` and `target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE`.
+## Troubleshooting 🐛
 
-## Res
-- https://community.st.com/t5/stm32-mcus-touchgfx-and-gui/segger-rtt-doesn-t-work-when-the-touchgfx-is-initiated/td-p/684496
+> **_Fun fact #1:_** CubeMX CMake links sources of ThreadX middleware, minimal setup of TouchGFX, but not links TouchGFX middleware nor generated project parts.
 
-
-## Meh
-
-I have no idea why TouchGFX 4.24.2 is not generating Nema lib dir. I copy-pased `touchgfx_components` from example project and placed in `target/components` so that it wont be wipedby some regenerations. 
-
-Fun fact: CubeMX links sources of generated project of touchgfx but not middleware lol. But links middleware of threadx.
+> **_Fun fact #1:_** TouchGFX is not generating Nema lib (Neo ChromArt). Copy-paste it from example, meh!
 
 To see all sections:
 arm-none-eabi-size -A /workspaces/combinedtemplate/target/build/tmplatemkfileu5dk.elf
