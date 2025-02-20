@@ -3,6 +3,8 @@
 /*********************************************************************************/
 #include <gui_generated/screen1_screen/Screen1ViewBase.hpp>
 #include <touchgfx/Color.hpp>
+#include <images/BitmapDatabase.hpp>
+#include <videos/VideoDatabase.hpp>
 
 Screen1ViewBase::Screen1ViewBase()
 {
@@ -10,21 +12,19 @@ Screen1ViewBase::Screen1ViewBase()
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    box1.setPosition(0, 0, 480, 272);
+    box1.setPosition(355, 73, 50, 50);
     box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     add(box1);
 
-    box1_1.setPosition(20, 82, 460, 163);
-    box1_1.setColor(touchgfx::Color::getColorFromRGB(255, 0, 0));
-    add(box1_1);
+    image1.setXY(75, 60);
+    image1.setBitmap(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_LOGOS_TOUCHGFX_GRADIENT_EMBOSSED_SVG_152_152_000000_SVG_ID));
+    add(image1);
 
-    box1_1_1.setPosition(32, 15, 82, 86);
-    box1_1_1.setColor(touchgfx::Color::getColorFromRGB(46, 60, 255));
-    add(box1_1_1);
-
-    box1_1_1_1.setPosition(32, 113, 82, 22);
-    box1_1_1_1.setColor(touchgfx::Color::getColorFromRGB(102, 255, 0));
-    add(box1_1_1_1);
+    video1.setPosition(75, 60, 330, 140);
+    video1.setVideoData(video_winter_bridge_bin_start, video_winter_bridge_bin_length);
+    video1.setRepeat(true);
+    video1.play();
+    add(video1);
 }
 
 Screen1ViewBase::~Screen1ViewBase()

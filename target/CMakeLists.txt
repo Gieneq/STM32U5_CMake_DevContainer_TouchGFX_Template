@@ -72,9 +72,17 @@ file(GLOB TOUCHGFX_GENERATED_FONTS_SOURCES "${TOUCHGFX_GENERATED_DIR}/fonts/src/
 
 # Guis has some sub dirs
 file(GLOB TOUCHGFX_GENERATED_GUI_SOURCES "${TOUCHGFX_GENERATED_DIR}/gui_generated/src/*/*.cpp")
+
+# Images
 file(GLOB TOUCHGFX_GENERATED_IMAGES_SOURCES "${TOUCHGFX_GENERATED_DIR}/images/src/*.cpp")
+file(GLOB TOUCHGFX_GENERATED__GENERATED_IMAGES_SOURCES "${TOUCHGFX_GENERATED_DIR}/images/src/__generated/*.cpp")
+# /workspaces/STM32U5_CMake_DevContainer_TouchGFX_Template/target/TouchGFX/generated/images/src/__generated
+
+# Texts
 file(GLOB TOUCHGFX_GENERATED_TEXTS_SOURCES "${TOUCHGFX_GENERATED_DIR}/texts/src/*.cpp")
-# Videos dir has bin and obj files
+
+# Videos dir has bin files
+file(GLOB TOUCHGFX_GENERATED_VIDEOS_OBJS "${TOUCHGFX_GENERATED_DIR}/videos/obj/*.bin.o")
 
 # Guis has some sub dirs
 file(GLOB TOUCHGFX_GUI_SOURCES "${TOUCHGFX_GUI_DIR}/src/*/*.cpp")
@@ -94,9 +102,12 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     ${TOUCHGFX_GENERATED_FONTS_SOURCES}
     ${TOUCHGFX_GENERATED_GUI_SOURCES}
     ${TOUCHGFX_GENERATED_IMAGES_SOURCES}
+    ${TOUCHGFX_GENERATED__GENERATED_IMAGES_SOURCES}
     ${TOUCHGFX_GENERATED_TEXTS_SOURCES}
     ${TOUCHGFX_GENERATED_VIDEOS_SOURCES}
     ${TOUCHGFX_GUI_SOURCES}
+    
+    ${TOUCHGFX_GENERATED_VIDEOS_OBJS}
 )
 
 # Add include paths

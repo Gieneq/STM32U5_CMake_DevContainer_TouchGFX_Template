@@ -39,7 +39,7 @@ void MX_DMA2D_Init(void)
   /* USER CODE END DMA2D_Init 1 */
   hdma2d.Instance = DMA2D;
   hdma2d.Init.Mode = DMA2D_R2M;
-  hdma2d.Init.ColorMode = DMA2D_OUTPUT_ARGB8888;
+  hdma2d.Init.ColorMode = DMA2D_OUTPUT_RGB565;
   hdma2d.Init.OutputOffset = 0;
   hdma2d.Init.BytesSwap = DMA2D_BYTES_REGULAR;
   hdma2d.Init.LineOffsetMode = DMA2D_LOM_PIXELS;

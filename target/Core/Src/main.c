@@ -23,6 +23,7 @@
 #include "crc.h"
 #include "dcache.h"
 #include "dma2d.h"
+#include "gpdma.h"
 #include "gpu2d.h"
 #include "icache.h"
 #include "jpeg.h"
@@ -104,6 +105,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_GPDMA1_Init();
   MX_RNG_Init();
   MX_TIM1_Init();
   MX_USART1_UART_Init();

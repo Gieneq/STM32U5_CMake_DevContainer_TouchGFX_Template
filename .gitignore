@@ -5,6 +5,7 @@
 
 # Custom
 target/build
+target/TouchGFX/build
 host/build
 gdb/debug.log
 gdb/jlink/jlink_log.txt

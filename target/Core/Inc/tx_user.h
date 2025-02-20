@@ -112,7 +112,7 @@
    to tx_port.h for descriptions on each of these options.  */
 
 /*#define TX_MAX_PRIORITIES                32*/
-/*#define TX_TIMER_THREAD_STACK_SIZE                1024*/
+#define TX_TIMER_THREAD_STACK_SIZE                1024*2
 /*#define TX_TIMER_THREAD_PRIORITY                0*/
 
 /*#define TX_MINIMUM_STACK                200*/
@@ -246,7 +246,7 @@
 
 /* Define the common timer tick reference for use by other middleware components. */
 
-/*#define TX_TIMER_TICKS_PER_SECOND                100*/
+#define TX_TIMER_TICKS_PER_SECOND                1000
 
 /* Determine if there is a FileX pointer in the thread control block.
    By default, the pointer is there for legacy/backwards compatibility.

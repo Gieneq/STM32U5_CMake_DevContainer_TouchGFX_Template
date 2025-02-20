@@ -18,6 +18,9 @@
 #define fopen_s(pFile, filename, mode) (((*(pFile)) = fopen((filename), (mode))) == NULL)
 #endif
 touchgfx::LCD16bpp lcd;
+const uint8_t* video_glacier_silent2_bin_start;
+const uint8_t* video_testviddeo_trimed_bin_start;
+const uint8_t* video_winter_bridge_bin_start;
 
 uint32_t lineBuffer[10000];
 SoftwareMJPEGDecoder *mjpegDecoders[1];
@@ -35,6 +38,11 @@ void setupVideoDecoder(touchgfx::HAL& hal)
         mjpegDecoders[i] = new SoftwareMJPEGDecoder((uint8_t*)lineBuffer);
         controller.addDecoder(*mjpegDecoders[i], i);
     }
+
+    char videoFileName[400];
+    setupVideo(static_cast<touchgfx::HALSDL2&>(hal).localFileName(videoFileName, 400, "glacier_silent2.bin"), &video_glacier_silent2_bin_start, video_glacier_silent2_bin_length);
+    setupVideo(static_cast<touchgfx::HALSDL2&>(hal).localFileName(videoFileName, 400, "testviddeo_trimed.bin"), &video_testviddeo_trimed_bin_start, video_testviddeo_trimed_bin_length);
+    setupVideo(static_cast<touchgfx::HALSDL2&>(hal).localFileName(videoFileName, 400, "winter_bridge.bin"), &video_winter_bridge_bin_start, video_winter_bridge_bin_length);
 }
 
 void setupVideo(const char* videoFileName, const uint8_t** videoBuffer, uint32_t videoLength)
@@ -67,6 +75,8 @@ void setupSimulator(int argc, char** argv, touchgfx::HAL& hal)
     // Initialize SDL
     bool sdl_init_result = static_cast<touchgfx::HALSDL2&>(hal).sdl_init(argc, argv);
     assert(sdl_init_result && "Error during SDL initialization");
+
+    setupVideoDecoder(hal);
     HAL::lcd().setVectorFontRenderer(&vectorFontRendererImpl);
 }
 

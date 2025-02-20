@@ -34,6 +34,7 @@ target_sources(stm32cubemx INTERFACE
     ../../Core/Src/crc.c
     ../../Core/Src/dcache.c
     ../../Core/Src/dma2d.c
+    ../../Core/Src/gpdma.c
     ../../Core/Src/gpu2d.c
     ../../Core/Src/icache.c
     ../../Core/Src/jpeg.c
