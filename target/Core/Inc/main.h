@@ -32,6 +32,16 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+int32_t HSPI_NOR_demo (void);
+int32_t HSPI_NOR_my_demo();
+void MY_NOR_Setup();
+uint32_t MY_NOR_transfer_block(
+  uint32_t offset_bytes, 
+  uint32_t bytes_count, 
+  uint8_t* data_buffer, 
+  uint32_t buffer_size
+);
+
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

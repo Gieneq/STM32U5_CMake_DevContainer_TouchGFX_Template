@@ -5,25 +5,11 @@
 
 #include <touchgfx/hal/Types.hpp>
 
-const uint32_t video_glacier_silent2_bin_length = 2694718;
+const uint32_t video_parott_worker_bin_length = 6790048;
 #ifdef SIMULATOR
-extern const uint8_t* video_glacier_silent2_bin_start;
+extern const uint8_t* video_parott_worker_bin_start;
 #else
-extern const uint8_t video_glacier_silent2_bin_start[];
-#endif
-
-const uint32_t video_testviddeo_trimed_bin_length = 57906;
-#ifdef SIMULATOR
-extern const uint8_t* video_testviddeo_trimed_bin_start;
-#else
-extern const uint8_t video_testviddeo_trimed_bin_start[];
-#endif
-
-const uint32_t video_winter_bridge_bin_length = 3111528;
-#ifdef SIMULATOR
-extern const uint8_t* video_winter_bridge_bin_start;
-#else
-extern const uint8_t video_winter_bridge_bin_start[];
+extern const uint8_t video_parott_worker_bin_start[];
 #endif
 
 #endif // TOUCHGFX_VIDEODATABASE_HPP

@@ -25,6 +25,7 @@
 #include "dma2d.h"
 #include "gpdma.h"
 #include "gpu2d.h"
+#include "hspi.h"
 #include "icache.h"
 #include "jpeg.h"
 #include "ltdc.h"
@@ -38,6 +39,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <app.h>
+#include <logger.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -71,6 +73,65 @@ static void SystemPower_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+  
+// #define RED_LED_Pin GPIO_PIN_2
+// #define RED_LED_GPIO_Port GPIOD
+// #define GREEN_LED_Pin GPIO_PIN_4
+// #define GREEN_LED_GPIO_Port GPIOD
+
+#define LOADER_RAM_BUFFER_SIZE (64 * 1024)
+uint8_t __attribute__((section(".loader_ram_buff_section"))) loader_ram_buffer[LOADER_RAM_BUFFER_SIZE];
+
+uint32_t __attribute__((section(".loader_ram_keep_section"))) loader_checksum;
+
+// TODO idea to handle errors
+// Can use limit sum: LOADER_RAM_BUFFER_SIZE * 255, much less than u32 max value.
+uint32_t __attribute__((section(".loader_code_section"))) loader_copy_to_ext_flash(uint32_t flash_offset, uint32_t loader_bytes_count) {
+  if (loader_bytes_count > LOADER_RAM_BUFFER_SIZE) {
+    return 0xFFFFFFFF;
+  }
+
+  // Copy to flash
+  uint32_t transfer_status = MY_NOR_transfer_block(
+    flash_offset,
+    loader_bytes_count,
+    (uint8_t*)loader_ram_buffer,
+    LOADER_RAM_BUFFER_SIZE
+  );
+
+  if (transfer_status > 0xFFFFFFF0) {
+    return transfer_status;
+  }
+
+  // Calculate checksum
+  uint32_t checksum = transfer_status;
+  // for (uint32_t idx = 0; idx < loader_bytes_count; ++idx) {
+  //   checksum += (uint32_t)(loader_ram_buffer[idx]);
+  // }
+
+  loader_bytes_count = 0;
+  loader_checksum = checksum;
+  HAL_GPIO_TogglePin(RED_LED_GPIO_Port, RED_LED_Pin);
+
+  return checksum;
+}
+
+void __attribute__((section(".loader_code_section"))) Loader_Breakpoint() {
+  green_reset();
+  green_set();
+}
+
+void green_togl() {
+  HAL_GPIO_TogglePin(GREEN_LED_GPIO_Port, GREEN_LED_Pin);
+}
+
+void green_set() {
+  HAL_GPIO_WritePin(GREEN_LED_GPIO_Port, GREEN_LED_Pin, GPIO_PIN_RESET);
+}
+
+void green_reset() {
+  HAL_GPIO_WritePin(GREEN_LED_GPIO_Port, GREEN_LED_Pin, GPIO_PIN_SET);
+}
 /* USER CODE END 0 */
 
 /**
@@ -81,7 +142,6 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -117,9 +177,26 @@ int main(void)
   MX_ICACHE_Init();
   MX_DCACHE1_Init();
   MX_DCACHE2_Init();
+  MX_HSPI1_Init();
   /* Call PreOsInit function */
   MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */
+    // logger_setup();
+  
+  // HSPI_NOR_demo();
+  // HSPI_NOR_my_demo();
+
+  MY_NOR_Setup();
+
+  green_togl();
+  Loader_Breakpoint();
+
+  int status = BSP_HSPI_NOR_EnableMemoryMappedMode(0);
+  if (status != 0) {
+      Error_Handler();
+  }
+
+  HAL_Delay(500);
 
   /* USER CODE END 2 */
 

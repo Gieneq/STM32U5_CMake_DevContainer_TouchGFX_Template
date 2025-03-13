@@ -5,37 +5,29 @@
         "Name": "Screen1",
         "Components": [
           {
-            "Type": "Box",
-            "Name": "box1",
-            "X": 355,
-            "Y": 73,
-            "Width": 50,
-            "Height": 50,
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            }
+            "Type": "Video",
+            "Name": "video1",
+            "Width": 480,
+            "Height": 270,
+            "VideoFileName": "parott_worker.avi",
+            "AutoPlay": true,
+            "Loop": true
+          },
+          {
+            "Type": "Image",
+            "Name": "worker",
+            "X": 399,
+            "Y": 173,
+            "Width": 72,
+            "Height": 97,
+            "RelativeFilename": "worker.png"
           },
           {
             "Type": "Image",
             "Name": "image1",
-            "X": 75,
-            "Y": 60,
-            "Width": 152,
-            "Height": 152,
-            "RelativeFilename": "__generated\\alternate_theme_images_logos_touchgfx_gradient_embossed_svg_152_152_000000.svg.png"
-          },
-          {
-            "Type": "Video",
-            "Name": "video1",
-            "X": 75,
-            "Y": 60,
-            "Width": 330,
-            "Height": 140,
-            "VideoFileName": "winter_bridge.avi",
-            "AutoPlay": true,
-            "Loop": true
+            "Width": 46,
+            "Height": 272,
+            "RelativeFilename": "titles.png"
           }
         ],
         "Interactions": []

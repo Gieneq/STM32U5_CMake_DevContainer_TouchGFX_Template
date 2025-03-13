@@ -48,6 +48,7 @@ MEMORY
   RAM (xrw)   : ORIGIN = 0x20000000, LENGTH = 2496K
   SRAM4 (xrw) : ORIGIN = 0x28000000, LENGTH = 16K
   FLASH (rx)  : ORIGIN = 0x08000000, LENGTH = 4096K
+  EXT_FLASH (r)   : ORIGIN = 0xA0000000, LENGTH = 128M
 }
 
 /* Sections */
@@ -177,4 +178,42 @@ SECTIONS
   } >RAM
 
   .ARM.attributes 0 : { *(.ARM.attributes) }
+
+  FramebufferSection (NOLOAD) :
+  {
+    *(TouchGFX_Framebuffer TouchGFX_Framebuffer.*)
+    *(.gnu.linkonce.r.*)
+    . = ALIGN(0x4);
+  } >RAM
+  
+  VideobufferSection (NOLOAD) :
+  {
+    *(Video_RGB_Buffer Video_RGB_Buffer.*)
+    *(.gnu.linkonce.r.*)
+    . = ALIGN(0x4);
+  } >RAM
+
+/* Attempt to move it to external memory */
+  ExtFlashSection (NOLOAD) :
+  {
+    *(ExtFlashSection ExtFlashSection.*)
+    *(.gnu.linkonce.r.*)
+    . = ALIGN(0x4);
+  } >EXT_FLASH
+
+  .loader_ram_buff_section (NOLOAD) : {
+    . = ALIGN(4);
+    KEEP(*(.loader_ram_buff_section))
+  } > RAM
+  
+  .loader_ram_keep_section : {
+    . = ALIGN(4);
+    KEEP(*(.loader_ram_keep_section))
+  } > RAM
+
+  .loader_code_section : {
+    . = ALIGN(4);
+    KEEP(*(.loader_code_section))
+  } > FLASH
+
 }

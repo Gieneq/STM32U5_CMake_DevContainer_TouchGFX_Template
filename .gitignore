@@ -10,6 +10,7 @@ host/build
 gdb/debug.log
 gdb/jlink/jlink_log.txt
 gdb/jlink/rtt_output.log
+scratchpad.md
 
 # User-specific files
 *.suo

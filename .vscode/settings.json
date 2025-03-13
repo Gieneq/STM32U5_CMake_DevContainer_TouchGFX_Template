@@ -9,6 +9,13 @@
         "usart.h": "c",
         "logger.h": "c",
         "app_threadx.h": "c",
-        "jpeg.h": "c"
+        "jpeg.h": "c",
+        "mx66uw1g45g.h": "c",
+        "mx66uw1g45g_conf.h": "c",
+        "stm32u5g9j_discovery_hspi.h": "c",
+        "stm32u5g9j_discovery_errno.h": "c",
+        "dcache.h": "c",
+        "icache.h": "c",
+        "jpeg_utils_conf.h": "c"
     }
 }

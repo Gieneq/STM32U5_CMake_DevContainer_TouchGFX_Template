@@ -16,6 +16,8 @@
                 "${workspaceFolder}/target/components/rtt/include",
                 "${workspaceFolder}/target/components/touchgfx_components/gpu2d/NemaGFX/include",
                 "${workspaceFolder}/target/components/touchgfx_components/gpu2d/TouchGFXNema/include",
+                "${workspaceFolder}/target/components/discovery/include",
+                "${workspaceFolder}/target/components/mx66uw1g45g/include",
 
                 // Touchgfx related
                 "${workspaceFolder}/target/TouchGFX/target",

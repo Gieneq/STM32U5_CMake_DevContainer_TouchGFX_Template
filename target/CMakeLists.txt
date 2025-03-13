@@ -98,6 +98,11 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     "components/rtt/SEGGER_RTT_Syscalls_GCC.c"
     "components/rtt/SEGGER_RTT.c"
 
+    "components/mx66uw1g45g/mx66uw1g45g.c"
+    
+    "components/discovery/stm32u5g9j_discovery_hspi.c"
+    "components/discovery/discovery_demo.c"
+
     # Automatically add generated sources
     ${TOUCHGFX_GENERATED_FONTS_SOURCES}
     ${TOUCHGFX_GENERATED_GUI_SOURCES}
@@ -116,6 +121,8 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     "App/include"
     
     "components/rtt/include"
+    "components/mx66uw1g45g/include"
+    "components/discovery/include"
 
     ${NEMAGFX_ROOT}/include
     ${TOUCHGFXNEMA_ROOT}/include

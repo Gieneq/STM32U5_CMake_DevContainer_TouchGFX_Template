@@ -6,7 +6,9 @@
 #include <touchgfx/hal/Types.hpp>
 #include <touchgfx/Bitmap.hpp>
 
-const uint16_t BITMAP_ALTERNATE_THEME_IMAGES_LOGOS_TOUCHGFX_GRADIENT_EMBOSSED_SVG_152_152_000000_SVG_ID = 0;
+const uint16_t BITMAP_ST_ID = 0;
+const uint16_t BITMAP_TITLES_ID = 1;
+const uint16_t BITMAP_WORKER_ID = 2;
 
 namespace BitmapDatabase
 {
