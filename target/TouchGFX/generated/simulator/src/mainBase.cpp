@@ -18,7 +18,7 @@
 #define fopen_s(pFile, filename, mode) (((*(pFile)) = fopen((filename), (mode))) == NULL)
 #endif
 touchgfx::LCD16bpp lcd;
-const uint8_t* video_parott_worker_bin_start;
+const uint8_t* video_evil_parrot_3sec_800_480_bin_start;
 
 uint32_t lineBuffer[10000];
 SoftwareMJPEGDecoder *mjpegDecoders[1];
@@ -38,7 +38,7 @@ void setupVideoDecoder(touchgfx::HAL& hal)
     }
 
     char videoFileName[400];
-    setupVideo(static_cast<touchgfx::HALSDL2&>(hal).localFileName(videoFileName, 400, "parott_worker.bin"), &video_parott_worker_bin_start, video_parott_worker_bin_length);
+    setupVideo(static_cast<touchgfx::HALSDL2&>(hal).localFileName(videoFileName, 400, "evil_parrot_3sec_800_480.bin"), &video_evil_parrot_3sec_800_480_bin_start, video_evil_parrot_3sec_800_480_bin_length);
 }
 
 void setupVideo(const char* videoFileName, const uint8_t** videoBuffer, uint32_t videoLength)

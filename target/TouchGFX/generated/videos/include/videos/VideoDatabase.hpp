@@ -5,11 +5,11 @@
 
 #include <touchgfx/hal/Types.hpp>
 
-const uint32_t video_parott_worker_bin_length = 6790048;
+const uint32_t video_evil_parrot_3sec_800_480_bin_length = 3212338;
 #ifdef SIMULATOR
-extern const uint8_t* video_parott_worker_bin_start;
+extern const uint8_t* video_evil_parrot_3sec_800_480_bin_start;
 #else
-extern const uint8_t video_parott_worker_bin_start[];
+extern const uint8_t video_evil_parrot_3sec_800_480_bin_start[];
 #endif
 
 #endif // TOUCHGFX_VIDEODATABASE_HPP

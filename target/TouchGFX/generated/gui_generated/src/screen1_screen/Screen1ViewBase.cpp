@@ -8,23 +8,28 @@
 
 Screen1ViewBase::Screen1ViewBase()
 {
-    __background.setPosition(0, 0, 480, 272);
+    __background.setPosition(0, 0, 800, 480);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    video1.setPosition(0, 0, 480, 270);
-    video1.setVideoData(video_parott_worker_bin_start, video_parott_worker_bin_length);
+    video1.setPosition(0, 0, 800, 480);
+    video1.setVideoData(video_evil_parrot_3sec_800_480_bin_start, video_evil_parrot_3sec_800_480_bin_length);
     video1.setRepeat(true);
     video1.play();
     add(video1);
 
-    worker.setXY(399, 173);
-    worker.setBitmap(touchgfx::Bitmap(BITMAP_WORKER_ID));
-    add(worker);
-
     image1.setXY(0, 0);
-    image1.setBitmap(touchgfx::Bitmap(BITMAP_TITLES_ID));
+    image1.setBitmap(touchgfx::Bitmap(BITMAP_AI_ID));
     add(image1);
+
+    scalableImage1.setBitmap(touchgfx::Bitmap(BITMAP_CHATLOGO_ID));
+    scalableImage1.setPosition(369, 9, 154, 163);
+    scalableImage1.setScalingAlgorithm(touchgfx::ScalableImage::NEAREST_NEIGHBOR);
+    add(scalableImage1);
+
+    image2.setXY(237, 306);
+    image2.setBitmap(touchgfx::Bitmap(BITMAP_YOU_ID));
+    add(image2);
 }
 
 Screen1ViewBase::~Screen1ViewBase()

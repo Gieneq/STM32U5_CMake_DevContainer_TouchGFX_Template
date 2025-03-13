@@ -10,6 +10,7 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/VideoWidget.hpp>
 #include <touchgfx/widgets/Image.hpp>
+#include <touchgfx/widgets/ScalableImage.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
@@ -28,8 +29,9 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::VideoWidget video1;
-    touchgfx::Image worker;
     touchgfx::Image image1;
+    touchgfx::ScalableImage scalableImage1;
+    touchgfx::Image image2;
 
 private:
 

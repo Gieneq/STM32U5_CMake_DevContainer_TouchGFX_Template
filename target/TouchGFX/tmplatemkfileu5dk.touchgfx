@@ -7,27 +7,37 @@
           {
             "Type": "Video",
             "Name": "video1",
-            "Width": 480,
-            "Height": 270,
-            "VideoFileName": "parott_worker.avi",
+            "Width": 800,
+            "Height": 480,
+            "VideoFileName": "evil_parrot_3sec_800_480.avi",
             "AutoPlay": true,
             "Loop": true
           },
           {
             "Type": "Image",
-            "Name": "worker",
-            "X": 399,
-            "Y": 173,
-            "Width": 72,
-            "Height": 97,
-            "RelativeFilename": "worker.png"
+            "Name": "image1",
+            "Width": 118,
+            "Height": 480,
+            "RelativeFilename": "AI.png"
+          },
+          {
+            "Type": "ScalableImage",
+            "Name": "scalableImage1",
+            "X": 369,
+            "Y": 9,
+            "Width": 154,
+            "Height": 163,
+            "Filename": "chatlogo.PNG",
+            "ScalingAlgorithm": "Nearest-neighbor"
           },
           {
             "Type": "Image",
-            "Name": "image1",
-            "Width": 46,
-            "Height": 272,
-            "RelativeFilename": "titles.png"
+            "Name": "image2",
+            "X": 237,
+            "Y": 306,
+            "Width": 116,
+            "Height": 161,
+            "RelativeFilename": "you.png"
           }
         ],
         "Interactions": []
@@ -36,8 +46,8 @@
     "CustomContainerDefinitions": [],
     "Name": "MyApplication",
     "Resolution": {
-      "Width": 480,
-      "Height": 272
+      "Width": 800,
+      "Height": 480
     },
     "SelectedColorDepth": 16,
     "StartupScreenName": "Screen1",
@@ -56,8 +66,8 @@
     ],
     "AvailableResolutions": [
       {
-        "Width": 480,
-        "Height": 272
+        "Width": 800,
+        "Height": 480
       }
     ],
     "PhysicalButtons": [],

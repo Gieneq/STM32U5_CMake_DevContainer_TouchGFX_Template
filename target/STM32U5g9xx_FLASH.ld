@@ -194,6 +194,7 @@ SECTIONS
   } >RAM
 
 /* Attempt to move it to external memory */
+  /* ExtFlashSection : */
   ExtFlashSection (NOLOAD) :
   {
     *(ExtFlashSection ExtFlashSection.*)
