@@ -196,6 +196,16 @@ int main(void)
       Error_Handler();
   }
 
+  // if (HAL_ICACHE_Disable() != HAL_OK)
+  // {
+  //   Error_Handler();
+  // }
+
+  // if (HAL_DCACHE_Disable(&hdcache2) != HAL_OK)
+  // {
+  //   Error_Handler();
+  // }
+  
   HAL_Delay(500);
 
   /* USER CODE END 2 */

@@ -16,6 +16,8 @@
         "stm32u5g9j_discovery_errno.h": "c",
         "dcache.h": "c",
         "icache.h": "c",
-        "jpeg_utils_conf.h": "c"
+        "jpeg_utils_conf.h": "c",
+        "dma2d.h": "c",
+        "gpu2d.h": "c"
     }
 }

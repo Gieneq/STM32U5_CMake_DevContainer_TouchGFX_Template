@@ -194,7 +194,8 @@ SECTIONS
   } >RAM
 
 /* Attempt to move it to external memory */
-  ExtFlashSection (NOLOAD) :
+  ExtFlashSection :
+  /* ExtFlashSection (NOLOAD) : */
   {
     *(ExtFlashSection ExtFlashSection.*)
     *(.gnu.linkonce.r.*)
